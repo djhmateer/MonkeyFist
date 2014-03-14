@@ -10,7 +10,7 @@ namespace Specs.Registration {
     [Trait("An application is received with empty email or password", "")]
     public class EmptyEmailOrPassword {
 
-        [Fact(DisplayName = "Application is invalid")]
+        [Fact(DisplayName = "Application is invalidated")]
         public void ApplicaitonConsideredInvalid() {
             throw new NotImplementedException();
         }
