@@ -1,14 +1,10 @@
 ﻿using MonkeyFist.Models;
 using MonkeyFist.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Specs.Registration {
-        [Trait("A Valid Application is Submitted", "")]
+    [Trait("A Valid Application is Submitted", "")]
     public class ValidApplicationReceived {
         Registrator _reg;
         RegistrationResult _result;
@@ -16,10 +12,14 @@ namespace Specs.Registration {
 
         public ValidApplicationReceived() {
             _reg = new Registrator();
-            _result = _reg.ApplyForMembership();
+            var app = new Application("dave@dave.com", "password", "password");
+            _result = _reg.ApplyForMembership(app);
             _user = _result.NewUser;
         }
-
+        [Fact(DisplayName = "Application is validated")]
+        public void ApplicationValidated() {
+            Assert.True(_result.Application.IsValid);
+        }
         [Fact(DisplayName = "A user is added to the system")]
         public void User_Is_Added_To_System() {
             Assert.NotNull(_user);
@@ -38,7 +38,7 @@ namespace Specs.Registration {
         }
         [Fact(DisplayName = "A confirmation message is provided to show to the user")]
         public void A_Message_is_Provided_for_User() {
-            Assert.Equal("Welcome!", _result.Message);
+            Assert.Equal("Welcome!", _result.Application.UserMessage);
         }
     }
 }

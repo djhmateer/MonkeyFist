@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MonkeyFist.Models;
+using MonkeyFist.Services;
+using System;
 using Xunit;
 
 namespace Specs.Registration {
 
-    [Trait("An application is received with empty email or password", "")]
+    [Trait("An application is created with empty email or password", "")]
     public class EmptyEmailOrPassword {
-
-        [Fact(DisplayName = "Application is invalidated")]
+        [Fact(DisplayName = "An exception is thrown with empty email")]
         public void ApplicaitonConsideredInvalid() {
-            throw new NotImplementedException();
+            Assert.Throws<InvalidOperationException>(
+                () => new Application("","password", "password")
+            );
         }
 
-        [Fact(DisplayName = "A message is returned")]
+        [Fact(DisplayName = "An exception is thrown with empty password")]
         public void A_Message_is_Returned() {
-            throw new NotImplementedException();
+            Assert.Throws<InvalidOperationException>(
+                () => new Application("dave@dave.com", "", "password")
+            );
         }
     }
 }
