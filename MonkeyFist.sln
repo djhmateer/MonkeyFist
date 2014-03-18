@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonkeyFist", "MonkeyFist\MonkeyFist.csproj", "{44C40ACD-721D-4F94-B65F-5C8DFCDC2657}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{409542
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks\Tasks.csproj", "{9944A0BB-CC6B-4F17-A7D4-EC4C1F84A481}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{9373ABD6-A959-4518-A228-33AC530C77DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9373ABD6-A959-4518-A228-33AC530C77DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9373ABD6-A959-4518-A228-33AC530C77DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9944A0BB-CC6B-4F17-A7D4-EC4C1F84A481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9944A0BB-CC6B-4F17-A7D4-EC4C1F84A481}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9944A0BB-CC6B-4F17-A7D4-EC4C1F84A481}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9944A0BB-CC6B-4F17-A7D4-EC4C1F84A481}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

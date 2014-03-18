@@ -1,16 +1,19 @@
-﻿using MonkeyFist.Models;
+﻿using MonkeyFist.DB;
+using MonkeyFist.Models;
 using MonkeyFist.Services;
 using System;
 using Xunit;
 
 namespace Specs.Registration {
     [Trait("A Valid Application is Submitted", "")]
-    public class ValidApplicationReceived {
+    public class ValidApplicationReceived : IDisposable {
         Registrator _reg;
         RegistrationResult _result;
         User _user;
 
         public ValidApplicationReceived() {
+            new Session().Database.ExecuteSqlCommand("DELETE FROM Users");
+
             _reg = new Registrator();
             var app = new Application("dave@dave.com", "password", "password");
             _result = _reg.ApplyForMembership(app);
@@ -39,6 +42,11 @@ namespace Specs.Registration {
         [Fact(DisplayName = "A confirmation message is provided to show to the user")]
         public void A_Message_is_Provided_for_User() {
             Assert.Equal("Welcome!", _result.Application.UserMessage);
+        }
+
+        // a global dispose?
+        public void Dispose() {
+            new Session().Database.ExecuteSqlCommand("DELETE FROM Users");
         }
     }
 }

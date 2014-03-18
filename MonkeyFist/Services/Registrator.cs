@@ -1,4 +1,5 @@
-﻿using MonkeyFist.Models;
+﻿using MonkeyFist.DB;
+using MonkeyFist.Models;
 using System;
 
 namespace MonkeyFist.Services {
@@ -21,19 +22,26 @@ namespace MonkeyFist.Services {
         //    return app;
         //}
 
-        public virtual RegistrationResult ApplicationAccepted() {
-            var result = new RegistrationResult();
-            _app.Status = ApplicationStatus.Accepted;
-            result.Application = _app;
+public virtual RegistrationResult ApplicationAccepted() {
+    var result = new RegistrationResult();
 
-            result.Application.UserMessage = "Welcome!";
-            result.NewUser = new User();
-            result.NewUser.ActivityLogs.Add(new UserActivityLog { Subject = "Registration", Entry = "User " + result.NewUser.Email + " successfully registered ", UserID = result.NewUser.ID });
+    using (var session = new Session()) {
+        _app.Status = ApplicationStatus.Accepted;
+        result.Application = _app;
 
-            result.NewUser.MailerLogs.Add(new UserMailerLog { Subject = "Please confirm your email", Body = "Lorem Ipsum", UserID = result.NewUser.ID });
-            result.Application.IsValid = true;
-            return result;
-        }
+        result.Application.UserMessage = "Welcome!";
+        result.NewUser = new User();
+        result.NewUser.ActivityLogs.Add(new UserActivityLog { Subject = "Registration", Entry = "User " + result.NewUser.Email + " successfully registered ", UserID = result.NewUser.ID });
+
+        result.NewUser.MailerLogs.Add(new UserMailerLog { Subject = "Please confirm your email", Body = "Lorem Ipsum", UserID = result.NewUser.ID });
+                
+        result.Application.IsValid = true;
+
+        session.Users.Add(result.NewUser);
+        session.SaveChanges();
+    }
+    return result;
+}
 
         bool EmailOrPasswordNotPresent() {
             return String.IsNullOrWhiteSpace(_app.Email) || String.IsNullOrWhiteSpace(_app.Password);
