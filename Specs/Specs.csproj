@@ -56,6 +56,7 @@
     <Compile Include="Registration\EmptyEmailOrPassword.cs" />
     <Compile Include="Registration\ApplicationValidations.cs" />
     <Compile Include="Registration\ValidApplicationReceived.cs" />
+    <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

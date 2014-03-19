@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevOne.Security.Cryptography.BCrypt">
+      <HintPath>..\packages\BCrypt.1.0.0.0\lib\DevOne.Security.Cryptography.BCrypt.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -51,6 +54,14 @@
     <Compile Include="Migrations\201403180715294_Adding Unique constraint to User Email.Designer.cs">
       <DependentUpon>201403180715294_Adding Unique constraint to User Email.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201403190619436_taking off required on hashed password.cs" />
+    <Compile Include="Migrations\201403190619436_taking off required on hashed password.Designer.cs">
+      <DependentUpon>201403190619436_taking off required on hashed password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201403190620502_putting on required on hashed password.cs" />
+    <Compile Include="Migrations\201403190620502_putting on required on hashed password.Designer.cs">
+      <DependentUpon>201403190620502_putting on required on hashed password.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Application.cs" />
     <Compile Include="Models\User.cs" />
@@ -67,6 +78,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201403180715294_Adding Unique constraint to User Email.resx">
       <DependentUpon>201403180715294_Adding Unique constraint to User Email.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403190619436_taking off required on hashed password.resx">
+      <DependentUpon>201403190619436_taking off required on hashed password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201403190620502_putting on required on hashed password.resx">
+      <DependentUpon>201403190620502_putting on required on hashed password.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

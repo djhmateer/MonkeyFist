@@ -2,16 +2,18 @@
 
 namespace MonkeyFist.Models {
     public enum ApplicationStatus {
-        Pending,
+        NotProcessed,
+        Invalid,
+        Validated,
         Accepted,
         Denied
     }
 
     public class Application {
+
         public string Email { get; set; }
         public string Password { get; set; }
         public string Confirmation { get; set; }
-        public bool IsValid { get; set; }
         public ApplicationStatus Status { get; set; }
         public string UserMessage { get; set; }
 
@@ -19,12 +21,20 @@ namespace MonkeyFist.Models {
             this.Email = email;
             this.Password = password;
             this.Confirmation = confirm;
-            this.Status = ApplicationStatus.Pending;
+            this.Status = ApplicationStatus.NotProcessed;
+        }
 
-            if (String.IsNullOrWhiteSpace(this.Email) || string.IsNullOrWhiteSpace(this.Password))
-                throw new InvalidOperationException("Can't have an Application without Email or Password!");
+        public bool IsAccepted() {
+            return this.Status == ApplicationStatus.Accepted;
+        }
 
-            this.IsValid = false;
+        public bool IsInvalid() {
+            return !IsValid();
+        }
+
+        public bool IsValid() {
+            return this.Status == ApplicationStatus.Validated ||
+              this.Status == ApplicationStatus.Accepted;
         }
     }
 }

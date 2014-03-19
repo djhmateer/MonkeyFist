@@ -16,9 +16,12 @@ namespace MonkeyFist.Models {
             this.CreatedAt = DateTime.Now;
         }
 
-        public Guid ID { get; set; }
         [MaxLength(255)]
         public string Email { get; set; }
+        [Required]
+        public string HashedPassword { get; set; }
+        
+        public Guid ID { get; set; }
         public UserStatus Status;
         public ICollection<UserActivityLog> ActivityLogs { get; set; }
         public ICollection<UserMailerLog> MailerLogs { get; set; }
