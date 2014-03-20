@@ -11,7 +11,7 @@ namespace Tasks {
         static void Main(string[] args) {
             var session = new Session();
             foreach (var log in session.ActivityLogs) {
-                Console.WriteLine(log.Data);
+                Console.WriteLine(log.Entry);
             }
 
             //var user = new User { Email = "dave@dave.com" };

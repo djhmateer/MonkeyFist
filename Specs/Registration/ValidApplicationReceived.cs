@@ -3,7 +3,7 @@ using MonkeyFist.Services;
 using Xunit;
 
 namespace Specs.Registration {
-    [Trait("A Valid Application is Submitted", "")]
+    [Trait("Valid Application", "")]
     public class ValidApplicationReceived : TestBase {
         Registrator _reg;
         RegistrationResult _result;

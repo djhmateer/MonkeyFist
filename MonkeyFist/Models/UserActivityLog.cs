@@ -12,7 +12,6 @@ namespace MonkeyFist.Models {
         [MaxLength(255)]
         public string Subject { get; set; }
         public string Entry { get; set; }
-        public string Data { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }
