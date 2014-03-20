@@ -52,6 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authentication\EmptyEmailOrPassword.cs" />
+    <Compile Include="Authentication\InvalidLogin.cs" />
+    <Compile Include="Authentication\ValidLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\EmptyEmailOrPassword.cs" />
     <Compile Include="Registration\ApplicationValidations.cs" />
@@ -63,7 +66,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Authentication\" />
     <Folder Include="Reminders\" />
   </ItemGroup>
   <ItemGroup>

@@ -10,8 +10,8 @@ namespace Specs.Registration {
         User _user;
 
         public ValidApplicationReceived() : base() {
-            _reg = new Registrator();
             var app = new Application("dave@dave.com", "password", "password");
+            _reg = new Registrator();
             _result = _reg.ApplyForMembership(app);
             _user = _result.NewUser;
         }

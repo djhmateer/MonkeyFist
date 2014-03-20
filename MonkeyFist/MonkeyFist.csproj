@@ -73,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Authenticator.cs" />
     <Compile Include="Services\Registrator.cs" />
   </ItemGroup>
   <ItemGroup>
