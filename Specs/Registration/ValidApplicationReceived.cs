@@ -33,7 +33,7 @@ namespace Specs.Registration {
         }
         [Fact(DisplayName = "Log entry created for event")]
         public void Log_Entry_Is_Created_For_Event() {
-            Assert.Equal(1, _user.ActivityLogs.Count);
+            Assert.Equal(1, _user.Logs.Count);
         }
         [Fact(DisplayName = "Email sent to confirm address")]
         public void Email_Sent_to_Confirm_Address() {

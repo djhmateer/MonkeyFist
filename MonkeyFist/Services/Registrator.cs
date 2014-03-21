@@ -83,7 +83,7 @@ namespace MonkeyFist.Services {
 
             //log the registration
             //user.AddLogEntry("Registration", "User with email " + user.Email + " successfully registered");
-            user.ActivityLogs.Add( new UserActivityLog {Subject = "Registration", Entry = "User with email " + user.Email + " successfully registered"});
+            user.Logs.Add( new UserActivityLog {Subject = "Registration", Entry = "User with email " + user.Email + " successfully registered"});
 
             //send off an email
             SendConfirmationRequest(user);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace MonkeyFist.Models {
     public enum UserStatus {
@@ -11,8 +12,9 @@ namespace MonkeyFist.Models {
         public User() {
             this.ID = Guid.NewGuid();
             this.Status = UserStatus.Pending;
-            this.ActivityLogs = new List<UserActivityLog>();
+            this.Logs = new List<UserActivityLog>();
             this.MailerLogs = new List<UserMailerLog>();
+            this.Sessions = new List<UserSession>();
             this.CreatedAt = DateTime.Now;
         }
 
@@ -23,9 +25,20 @@ namespace MonkeyFist.Models {
         
         public Guid ID { get; set; }
         public UserStatus Status;
-        public ICollection<UserActivityLog> ActivityLogs { get; set; }
+        public ICollection<UserActivityLog> Logs { get; set; }
         public ICollection<UserMailerLog> MailerLogs { get; set; }
+        public ICollection<UserSession> Sessions { get; set; }
         public DateTime CreatedAt { get; set; }
-        
+
+        public void AddLogEntry(string subject, string entry) {
+            this.Logs.Add(new UserActivityLog { Subject = subject, Entry = entry });
+        }
+
+        public UserSession CurrentSession {
+            get {
+                return this.Sessions.OrderByDescending(s => s.EndsAt).FirstOrDefault();
+            }
+        }
+
     }
 }
